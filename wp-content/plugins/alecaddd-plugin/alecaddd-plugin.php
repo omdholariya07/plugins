@@ -56,3 +56,8 @@ if( class_exists('AlecadddPlugin')){
 register_activation_hook( __FILE__, array($alecadddPlugin,'activate') );
 
 register_deactivation_hook( __FILE__, array($alecadddPlugin,'deactivate'));
+
+function my_sc_fun(){
+    return 'Function Call';
+}
+add_shortcode('my-sc','my_sc_fun');
