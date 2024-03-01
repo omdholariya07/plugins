@@ -57,7 +57,7 @@ register_activation_hook( __FILE__, array($alecadddPlugin,'activate') );
 
 register_deactivation_hook( __FILE__, array($alecadddPlugin,'deactivate'));
 
-function my_sc_fun(){
-    return 'Function Call';
+function my_sc_fun($atts){
+    return 'Function Call' . $atts['msg'];
 }
 add_shortcode('my-sc','my_sc_fun');
