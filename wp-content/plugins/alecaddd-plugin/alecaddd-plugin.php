@@ -27,27 +27,45 @@ if( ! function_exists('add_action')){
 */
 
 class AlecadddPlugin{
+     
+     public $plugin;
 
     function __construct(){
-     add_action ('init',array($this,'custom_post_type'));
+     //add_action ('init',array($this,'custom_post_type'));
+     $this ->plugin = plugin_basename( __FILE__ );
     }
     function register() {
         add_action('wp_enqueue_style',array($this,'enqueue'));
+
+        add_action('admin_menu',array($this,'add_admin_pages'));
+        
+
+        add_filter("plugin_action_links_$this->plugin", array($this,'settings_link'));
     }
+     public function settings_link($links){
+         $settings_link = '<a href="admin.php?page=alecaddd_plugin">Settings</a>';
+         array_push($links,$settings_link);
+         return $links;
+     }
+          public function add_admin_pages(){
+        add_menu_page('$Alecaddd plugin','Alecaddd','manage_options','alecaddd_plugin',array($this,'admin_index'),'dashicons-store',110);
+      }
+
+      public function admin_index(){
+        require_once plugin_dir_path(__FILE__).'templates/admin.php';
+      }
     function activate(){
-       //generate CPT
-       $this->custom_post_type();
-       // flush rewrite rules  
-       flush_rewrite_rules();
+       require_once plugin_dir_path(__FILE__).'inc/alecaddd-plugin-activate.php';
+       AlecadddPluginActivate::activate();
     }
     function deactivate(){
       // flush rewrite rules
-    }
+    } 
     function uninstall(){
       //delete CPT
       //delete all the plugin data from the db 
     }
-
+ 
     function custom_post_type(){
         register_post_type('book',['public' => true, 'label' => 'Books']);
     }
