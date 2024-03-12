@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Om\\' => array($baseDir . '/inc'),
+    'inc\\' => array($baseDir . '/inc'),
 );

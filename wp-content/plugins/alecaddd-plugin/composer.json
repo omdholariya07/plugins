@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "require" : {},
     "autoload" : {
-        "psr-4": {"Om\\": "./inc"}
+        "psr-4": {"inc\\": "./inc"}
     }
     
     }
