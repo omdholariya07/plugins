@@ -3,7 +3,7 @@
  * @package Alecadddplugin
  */
 
-namespace inc;
+namespace inc\Base;
 
 class Activate {
     public static function activate() {
