@@ -6,46 +6,147 @@ namespace inc\Pages;
 
 use \inc\Base\BaseController;
 use \inc\Api\SettingsApi;
+use inc\Api\Callbacks\AdminCallbacks;
 
 class Admin extends BaseController 
 {   
     public $settings;
-
+    public $callbacks;
     public $pages = array();
 
-    public function __construct(){
-        $this->settings = new SettingsApi();
-    
+    public $subpages = array();
 
+    public function register(){
+
+        $this->settings = new SettingsApi();
+
+        $this->callbacks = new AdminCallbacks();
+       
+        $this->setPages();
+
+        $this->setSubPages();
+
+        $this->setSettings();
+        $this->setSections();
+        $this->setFields();
+
+        $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
+    }
+    
+      public function setPages(){
+
+        
     $this->pages = array(
          
+        array(
+            'page_title' => 'Alecaddd Plugin',
+            'menu_title' => 'Alecaddd',
+            'capability' => 'manage_options',
+            'menu_slug' => 'alecaddd_plugin',
+            'callback' => array($this->callbacks,'adminDashboard'),
+            'icon_url' => 'dashicons-store',
+            'position' => 9
+        ),
+
+
+        );
+
+      }
+
+      public function setSubPages(){
+        
+        $this->subpages = array(
             array(
-                'page_title' => 'Alecaddd Plugin',
-                'menu_title' => 'Alecaddd',
-                'capability' => 'manage_options',
-                'menu_slug' => 'alecaddd_plugin',
-                'callback' => function(){ echo '<h1>Alecaddd Plugin</h1>';},
-                'icon_url' => 'dashicons-store',
-                'position' => 9
+            'parent_slug'=>'alecaddd_plugin',
+            'page_title' => 'Custom Post Types',
+            'menu_title' => 'CPT',
+            'capability' => 'manage_options',
+            'menu_slug' => 'alecaddd_cpt',
+            'callback' => array($this->callbacks,'adminCpt')
+        
             ),
 
             array(
-                'page_title'=>'Test Plugin',
-                'menu_title' => 'Test',
+                'parent_slug'=>'alecaddd_plugin',
+                'page_title' => 'Custom Post Types',
+                'menu_title' => 'Texonomies',
                 'capability' => 'manage_options',
-                'menu_slug' => 'test_plugin',
-                'callback' => function(){ echo '<h1>External</h1>';},
-                'icon_url' => 'dashicons-external',
-                'position' => 9
-            )
+                'menu_slug' => 'alecaddd_texonomies',
+                'callback' => array($this->callbacks,'adminTaxonomy')
+        
+                ),
 
+                array(
+                    'parent_slug'=>'alecaddd_plugin',
+                    'page_title' => 'Custom Post Types',
+                    'menu_title' => 'Widgets',
+                    'capability' => 'manage_options',
+                    'menu_slug' => 'alecaddd_widgets',
+                    'callback' => array($this->callbacks,'adminWidget')
+        
+                    )
 
-            );
+        );
+      }
+        public function setSettings(){
+            $args = array(
+                array(
+                     'option_group' => 'alecaddd_options_group',
+                     'option_name' => 'text_example',
+                     'callback' => array($this->callbacks,'alecadddOptionsGroup')
+                )
+             );
+
+             $args = array(
+                array(
+                     'option_group' => 'alecaddd_options_group',
+                     'option_name' => 'first_name'   
+                )
+             );
+
+             $this->settings->setSettings($args);
         }
-    public function register(){
-      
-        $this->settings->addPages($this->pages)->register();
-    }
 
+        public function setSections(){
+            $args = array(
+                array(
+                     'id' => 'alecaddd_admin_index',
+                     'title' => 'Settings',
+                     'callback' => array($this->callbacks,'alecadddAdminSection'),
+                     'page' => 'alecaddd_plugin'
+                )
+             );
 
+             $this->settings->setSections($args);
+        }
+
+        public function setFields(){
+            $args = array(
+                array(
+                     'id' => 'text_example',
+                     'title' => 'Text Example',
+                     'callback' => array($this->callbacks,'alecadddTextExample'),
+                     'page' => 'alecaddd_plugin',
+                     'section' => 'alecaddd_admin_index',
+                     'args' => array(
+                        'lebel_for' => 'text_example',
+                        'class' => 'example-class'
+                     )
+                    ),
+
+                    array(
+                        'id' => 'first_name',
+                        'title' => 'First Name',
+                        'callback' => array($this->callbacks,'alecadddFirstName'),
+                        'page' => 'alecaddd_plugin',
+                        'section' => 'alecaddd_admin_index',
+                        'args' => array(
+                           'lebel_for' => 'first_name',
+                           'class' => 'example-class'
+                        )
+                    )
+             );
+
+             $this->settings->setFields($args);
+        }
 }
