@@ -17,7 +17,7 @@
         do_settings_sections('alecaddd_plugin');
         submit_button();
         ?>
-            </form>
+            </form> 
         </div>
 
         <div id="tab-2" class="tab-pane">

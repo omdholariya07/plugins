@@ -29,15 +29,15 @@ class AdminCallbacks extends BaseController
        return require_once( $this->plugin_path . '/templates/widget.php' );
     }
 
-    public function alecadddOptionsGroup($input)
-    {
-      return $input;
-    }
+    // public function alecadddOptionsGroup($input)
+    // {
+    //   return $input;
+    // }
 
-    public function alecadddAdminSection()
-    {
-      echo 'check this section';
-    }
+    // public function alecadddAdminSection()
+    // {
+    //   echo 'check this section';
+    // }
 
     public function alecadddTextExample()
     {
