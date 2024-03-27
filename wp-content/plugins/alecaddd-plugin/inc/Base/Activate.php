@@ -7,8 +7,14 @@ namespace inc\Base;
 
 class Activate {
     public static function activate() {
-        // Activation logic here
-        // For example, you might want to perform some actions when the plugin is activated
         flush_rewrite_rules();
+        
+       if(get_option('alecaddd_plugin')){
+           return;
+       }
+        
+        $default = array();
+        
+       update_option('alecaddd_plugin',$default);
     }
 }

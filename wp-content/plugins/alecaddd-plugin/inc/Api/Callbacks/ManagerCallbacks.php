@@ -13,9 +13,8 @@ class ManagerCallbacks extends BaseController
     {
         $output = array();
         
-        // Check if $input is an array
         if (is_array($input)) {
-            foreach ($this->manager as $key => $value) {
+            foreach ($this->managers as $key => $value) {
                 $output[$key] = isset($input[$key]) ? true : false;  
             }
         }
@@ -29,13 +28,16 @@ class ManagerCallbacks extends BaseController
     }
 
     public function checkboxField($args)
-    {
-        $name = $args['label_for']; 
-        $classes = $args['class'];
-        $option_name = $args['option_name']; 
-        $checkbox = get_option($option_name);
-        echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name .'[' . $name . ']" value="1" class="' . $classes . '"' . ($checkbox[$name] ? ' checked' : '') . '><label for="' . $name . '"><div></div></label></div>'; 
-    }
+{
+    $name = $args['label_for']; 
+    $classes = $args['class'];
+    $option_name = $args['option_name']; 
+    $checkbox = get_option($option_name);
     
-    
+    $checked = isset($checkbox[$name]) ? ($checkbox[$name] ? true : false) : false;
+   
+     echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name .'[' . $name . ']" value="1" class="" ' . ($checked ? 'checked': '') . '><label for="' . $name . '"><div></div></label></div>';  
+}
+
+
 }   

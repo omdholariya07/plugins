@@ -68,10 +68,10 @@ $height: 40px;
         }
     }
 
+}
 
-.ui-toggle{
+div.ui-toggle{
     @include ui-toggle(20px, $on , $off);
-    
-}
 
 }
+

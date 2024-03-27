@@ -33,6 +33,16 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
+function activate_alecaddd_plugin(){
+    inc\Base\Activate::activate();
+}
+register_activation_hook(__FILE__,'activate_alecaddd_plugin');
+
+function deactivate_alecaddd_plugin(){
+    inc\Base\Deactivate::deactivate();
+}
+register_deactivation_hook(__FILE__,'deactivate_alecaddd_plugin');
+
 if (class_exists('inc\\init')) {
     inc\init::register_services();
 }

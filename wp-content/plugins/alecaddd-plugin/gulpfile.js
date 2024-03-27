@@ -13,3 +13,4 @@ gulp.task('scss',function(){
 gulp.task('watch', function() {
   gulp.watch('src/scss/*.scss', gulp.series('scss')); 
 });
+
