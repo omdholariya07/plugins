@@ -4,24 +4,27 @@
  */
 namespace Inc\Api\Callbacks;
 
-use Inc\Base\BaseController;
-
-class ManagerCallbacks extends BaseController
+class CptCallbacks
 {
-	public function checkboxSanitize( $input )
+
+	public function cptSectionManager()
 	{
-		$output = array();
-
-		foreach ( $this->managers as $key => $value ) {
-			$output[$key] = isset( $input[$key] ) ? true : false;
-		}
-
-		return $output;
+		echo 'Create as many Custom Post Types as you want.';
 	}
 
-	public function adminSectionManager()
+	public function cptSanitize( $input )
 	{
-		echo 'Manage the Sections and Features of this Plugin by activating the checkboxes from the following list.';
+		return $input;
+	}
+
+	public function textField( $args )
+	{
+		$name = $args['label_for'];
+		$option_name = $args['option_name'];
+		$input = get_option( $option_name );
+		$value = $input[$name];
+
+		echo '<input type="text" class="regular-text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args['placeholder'] . '">';
 	}
 
 	public function checkboxField( $args )
