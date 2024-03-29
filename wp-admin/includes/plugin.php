@@ -12,7 +12,7 @@
  * All plugin headers must be on their own line. Plugin description must not have
  * any newlines, otherwise only parts of the description will be displayed.
  * The below is formatted for printing.
- *
+ *  
  *     /*
  *     Plugin Name: Name of the plugin.
  *     Plugin URI: The home page of the plugin.
@@ -2089,10 +2089,11 @@ function get_plugin_page_hookname( $plugin_page, $parent_page ) {
 		$page_type = $admin_page_hooks[ $parent ];
 	}
 
-	$plugin_name = preg_replace( '!\.php!', '', $plugin_page );
+	$plugin_name = str_replace( '.php', '', $plugin_page );
 
 	return $page_type . '_page_' . $plugin_name;
 }
+
 
 /**
  * Determines whether the current user can access the current admin page.

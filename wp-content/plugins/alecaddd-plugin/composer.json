@@ -1,18 +1,20 @@
 {
-    "name" : "alecaddd/alecaddd-plugin",
-    "description" : "Awesome starter plugin example",
-    "type" : "project",
+    "name": "alecaddd/alecaddd-plugin",
+    "description": "Awesome starter plugin example",
+    "type": "project",
     "license": "GPL",
-    "authors" : [
+    "authors": [
         {
-            "name" : "Alecaddd",
-            "email" : "castellani.ale@gmail.com"
+            "name": "Alecaddd",
+            "email": "castellani.ale@gmail.com"
         }
     ],
     "minimum-stability": "dev",
-    "require" : {},
-    "autoload" : {
-        "psr-4": {"Inc\\": "./inc"}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "inc/"
+        }
     }
+}
     
-    }   

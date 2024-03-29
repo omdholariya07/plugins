@@ -16,6 +16,7 @@ class WidgetController extends BaseController
 	public $callbacks;
 
 	public $subpages = array();
+    
 
 	public function register()
 	{
