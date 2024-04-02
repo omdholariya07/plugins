@@ -4,7 +4,7 @@
   "description": "plugins",
   "main": "gulpfile.js",
   "scripts": {
-    "compile:sass" : "node-sass src/scss/mystyle.scss assets/mystyle.css -w"
+    "compile:sass": "node-sass src/scss/mystyle.scss assets/mystyle.css -w"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,8 @@
     "node-sass": "^9.0.0"
   },
   "dependencies": {
-    "sass": "^1.72.0"
+    "code-prettify": "^0.1.0",
+    "sass": "^1.72.0",
+    "terser": "^5.30.1"
   }
 }

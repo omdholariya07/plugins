@@ -172,7 +172,7 @@ class CustomPostTypeController extends BaseController
 
     if (!empty($options) && is_array($options)) {
         foreach ($options as $option) {
-
+            if (!empty($option) && is_array($option)) {
            // if (isset($option['post_type'], $option['singular_name'], $option['plural_name'], $option['public'], $option['has_archive'])) {
 
                 $this->custom_post_types[] = array(
@@ -224,7 +224,7 @@ class CustomPostTypeController extends BaseController
             }
         }
     
-    }
+    }}
 
 
 	public function registerCustomPostTypes()
