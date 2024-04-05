@@ -10,5 +10,9 @@ get_header(); ?>
 
 <p>This is loading properly!</p>
 
+<!-- <h3>hey </h3>
+<p>hello how are you?</p> -->
+
+
 <?php
 get_footer();
