@@ -58,7 +58,7 @@ class MediaWidget extends WP_Widget
 		}
 		echo $args['after_widget'];
 	}
-
+    
 	public function form( $instance ) {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Custom Text', 'awps' );
 		$image = ! empty( $instance['image'] ) ? $instance['image'] : '';

@@ -1,0 +1,24 @@
+.field-container{
+    position: relative;
+    margin-bottom: 20px;
+    
+}
+.field-msg.js-form-submission {
+    display: none;
+}
+.field-msg.success.js-form-success{
+    color: green;
+    display: none;
+}
+.field-msg.error.js-form-error{
+    color: red;
+}
+.field-msg.error{
+  display: none;
+  color: red;
+  letter-spacing: 0.05em;
+
+}
+.field-msg.show{
+display: none;
+}

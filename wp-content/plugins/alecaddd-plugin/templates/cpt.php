@@ -77,9 +77,12 @@
         </div>
 
         <div id="tab-3" class="tab-pane">
+
             <h3>Export Your Custom Post Types</h3>
+
             <?php 
             $options = get_option('alecaddd_plugin_cpt') ?: array();
+            
             foreach ($options as $option) {
                 if (is_array($option) && !empty($option)) { 
             ?>

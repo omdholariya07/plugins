@@ -40,6 +40,7 @@ class TestimonialController extends BaseController
 	public function testimonial_form()
 	{
 		ob_start();
+        echo "<link rel=\"stylesheet\" href=\"$this->plugin_url/assets/form.css\" type=\"text/css\" media=\"all\"/>";
 		require_once( "$this->plugin_path/templates/contact-form.php" );
 		echo "<script src=\"$this->plugin_url/src/js/form.js\"></script>";
 		return ob_get_clean();

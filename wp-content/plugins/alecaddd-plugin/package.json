@@ -1,21 +1,22 @@
 {
-  "name": "alecaddd-plugin",
-  "version": "1.0.0",
-  "description": "plugins",
-  "main": "gulpfile.js",
-  "scripts": {
+    "name": "alecaddd-plugin",
+    "version": "1.0.0",
+    "description": "plugins",
+    "main": "gulpfile.js",
+    "scripts": {
     "compile:sass": "node-sass src/scss/mystyle.scss assets/mystyle.css -w"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "node-sass": "^9.0.0"
-  },
-  "dependencies": {
+    },
+    "dependencies": {
     "code-prettify": "^0.1.0",
     "sass": "^1.72.0",
     "terser": "^5.30.1"
-  }
-}
+    }
+    }
+    
