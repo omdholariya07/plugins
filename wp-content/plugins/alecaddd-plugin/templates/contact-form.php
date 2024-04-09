@@ -1,8 +1,9 @@
+
 <form id="alecaddd-testimonial-form" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 
 	<div class="field-container">
 		<input type="text" class="field-input" placeholder="Your Name" id="name" name="name" required>
-		<small class="field-msg  show">Your Name is Required</small>
+		<small class="field-msg error">Your Name is Required</small>
 	</div>
 
 	<div class="field-container">
@@ -18,7 +19,7 @@
 	
 	<div class="field-container">
 		<div>
-            <button type="submit" class="btn btn-default btn-lg btn-sunset-form">Submit</button>
+            <button type="stubmit" class="btn btn-default btn-lg btn-sunset-form">Submit</button>
         </div>
 		<small class="field-msg js-form-submission">Submission in process, please wait&hellip;</small>
 		<small class="field-msg success js-form-success">Message Successfully submitted, thank you!</small>

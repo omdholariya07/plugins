@@ -1,5 +1,8 @@
+import 'code-prettify';
 
 window.addEventListener("load",function(){
+
+    PR.prettyPrint();
 
     var tabs = document.querySelectorAll("ul.nav-tabs >  li");
 
@@ -22,3 +25,5 @@ window.addEventListener("load",function(){
         
     }
 });
+
+//# sourceMappingURL=myscript.js.map

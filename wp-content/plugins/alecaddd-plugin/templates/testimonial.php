@@ -6,4 +6,5 @@
 
     <p>Testimonial SlideShow Shortcode</p>
     <p><code>[testimonial-slideshow]</code></p>
+    
 </div>

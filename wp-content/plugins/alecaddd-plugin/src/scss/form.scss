@@ -1,15 +1,29 @@
-#alecaddd-testimonial-form{
-.field-container{
-    position: relative;
-}
+#alecaddd-testimonial-form {
+    .field-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
 
+    .field-msg {
+        display: none;
+        position: absolute;
+        left: 2px;
+        bottom: -14px;
+        font-size: 9px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.05em;
 
-.error{
-    color: #f00;
-}
+        &.show {
+            display: block;
+        }
+    }
 
-.success{
-    color: green;
-}
+    .error {
+        color: rgb(184, 3, 3);
+    }
 
+    .success {
+        color: rgb(47, 129, 47);
+    }
 }

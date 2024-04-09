@@ -1,27 +1,44 @@
-var gulp = require('gulp');
+const { src, dest, task,series,watch} = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-//const jsMinify = require('gulp-terser');
+//const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('scss',function(){
-return gulp.src('src/scss/mystyle.scss')
-.pipe(sass())
-.pipe(gulp.dest('assets'));
+const styleSRC = ['./src/scss/mystyle.scss', './src/scss/form.scss'];
+const styleDIST = './assets/';
+const styleWatch = './src/scss/**/*.scss';
 
+const jsSRC = './src/js/myscript.js';
+const jsDIST = './assets/';
+const jsWatch = './src/js/**/*.js';
+
+function compileSass() {
+    return src(styleSRC)
+        .pipe(sourcemaps.init())
+        .pipe(sass({    
+            errorLogToConsole: true,
+            outputStyle: 'compressed'
+        })
+        .on('error', sass.logError))
+       // .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(dest(styleDIST));
+}
+
+function copyJS() {
+    return src(jsSRC) 
+    .pipe(sourcemaps.init())
+   // .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('./'))
+    .pipe(dest(jsDIST));
+}
+
+task('style', compileSass);
+task('js', copyJS);
+
+
+task('default', series('style', 'js'));
+
+task('watch', function() {
+    watch(styleWatch, series('style'));
+    watch(jsWatch, series('js'));
 });
-gulp.task('scss', function() {
-    return gulp.src('src/scss/form.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('assets/form.css'));
-});
-
-
-gulp.task('watch', function() {
-gulp.watch('src/scss/*.scss', gulp.series('scss')); 
-});
-
-// gulp.task('scss',function(){
-// return gulp.src('src/js/myscript.js')
-// .pipe(jsMinify())
-// .pipe(gulp.dest('assets'));
-
-// });

@@ -20,26 +20,44 @@
             <?php 
                 $options = get_option('alecaddd_plugin_tax') ?: array();
 
-                echo '<table class="cpt-table"><tr><th>ID</th><th>Singular Name</th><th class="text-center">Hierarchical</th><th class="text-center">Actions</th></tr>';
+                echo '<table class="cpt-table">
+                <tr>
+                <th>ID</th>
+                <th>Singular Name</th>
+                <th class="text-center">Hierarchical</th>
+                <th class="text-center">Actions</th>
+                </tr>';
 
                 foreach ($options as $option) {
                     $taxonomy = isset($option['taxonomy']) ? $option['taxonomy'] : '';
                     $singular_name = isset($option['singular_name']) ? $option['singular_name'] : '';
                     $hierarchical = isset($option['hierarchical']) ? "TRUE" : "FALSE";
 
-                    echo "<tr><td>{$taxonomy}</td><td>{$singular_name}</td><td class=\"text-center\">{$hierarchical}</td><td class=\"text-center\">";
+                    echo "<tr>
+                    <td>{$taxonomy}</td>
+                    <td>{$singular_name}</td>
+                    <td class=\"text-center\">{$hierarchical}</td>
+                    <td class=\"text-center\">";
 
                     echo '<form method="post" action="" class="inline-block">';
+
                     echo '<input type="hidden" name="edit_taxonomy" value="' . $taxonomy . '">';
+
                     submit_button('Edit', 'primary small', 'submit', false);
+
                     echo '</form> ';
+                    
 
                     echo '<form method="post" action="options.php" class="inline-block">';
+
                     settings_fields('alecaddd_plugin_tax_settings');
+
                     echo '<input type="hidden" name="remove" value="' . $taxonomy . '">';
+
                     submit_button('Delete', 'delete small', 'submit', false, array(
                         'onclick' => 'return confirm("Are you sure you want to delete this Custom Taxonomy? The data associated with it will not be deleted.");'
                     ));
+
                     echo '</form></td></tr>';
                 }
 

@@ -45,7 +45,7 @@ class TemplateController extends BaseController
             return $templates;
         }
 
-        // if front page , load custom template
+        // if front page , load custom template 
         if(is_front_page()){
             $file = $this->plugin_path . 'page-templates/front-page.php';
 

@@ -1,24 +1,2 @@
-.field-container{
-    position: relative;
-    margin-bottom: 20px;
-    
-}
-.field-msg.js-form-submission {
-    display: none;
-}
-.field-msg.success.js-form-success{
-    color: green;
-    display: none;
-}
-.field-msg.error.js-form-error{
-    color: red;
-}
-.field-msg.error{
-  display: none;
-  color: red;
-  letter-spacing: 0.05em;
-
-}
-.field-msg.show{
-display: none;
-}
+#alecaddd-testimonial-form .field-container{position:relative;margin-bottom:20px}#alecaddd-testimonial-form .field-msg{display:none;position:absolute;left:2px;bottom:-14px;font-size:9px;text-transform:uppercase;font-weight:600;letter-spacing:.05em}#alecaddd-testimonial-form .field-msg.show{display:block}#alecaddd-testimonial-form .error{color:#b80303}#alecaddd-testimonial-form .success{color:#2f812f}
+/*# sourceMappingURL=form.css.map */
