@@ -9,15 +9,17 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "global": "^4.4.0",
         "gulp": "^4.0.2",
+        "gulp-dart-sass": "^1.1.0",
         "gulp-sass": "^5.1.0",
-        "node-sass": "^9.0.0"
+        "node-sass": "^9.0.0",
+        "sass": "^1.74.1"
     },
     "dependencies": {
         "code-prettify": "^0.1.0",
         "gulp-rename": "^2.0.0",
         "gulp-sourcemaps": "^3.0.0",
-        "sass": "^1.72.0",
         "terser": "^5.30.1"
     }
 }

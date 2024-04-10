@@ -19,11 +19,14 @@
 	
 	<div class="field-container">
 		<div>
-            <button type="stubmit" class="btn btn-default btn-lg btn-sunset-form">Submit</button>
+            <button type="submit" class="btn btn-default btn-lg btn-sunset-form">Submit</button>
         </div>
 		<small class="field-msg js-form-submission">Submission in process, please wait&hellip;</small>
 		<small class="field-msg success js-form-success">Message Successfully submitted, thank you!</small>
 		<small class="field-msg error js-form-error">There was a problem with the Contact Form, please try again!</small>
 	</div>
+    <input type="hidden" name="action" value="submit_testmionial">
 
+    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce("testimonial-nonce") ?>">
 </form>
+
