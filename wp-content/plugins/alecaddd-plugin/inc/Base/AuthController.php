@@ -4,43 +4,38 @@
  */
 namespace Inc\Base;
 
-use Inc\Api\SettingsApi;
+
 use Inc\Base\BaseController;
-use Inc\Api\Callbacks\AdminCallbacks;
 
 /**
 * 
 */
 class AuthController extends BaseController
 {
-	public $callbacks;
-
-	public $subpages = array();
 
 	public function register()
 	{
 		if ( ! $this->activated( 'login_manager' ) ) return;
 
-		$this->settings = new SettingsApi();
+        add_action('wp_enqueue_scripts',array($this,'enqueue'));
 
-		$this->callbacks = new AdminCallbacks();
+        add_action('wp_head',array($this,'add_auth_template'));
+    }
 
-		$this->setSubpages();
+    public function enqueue()
+    {
+    
+        wp_enqueue_style('authStyle',$this->plugin_url . 'assets/auth.css');
 
-		$this->settings->addSubPages( $this->subpages )->register();
-	}
+        wp_enqueue_script('authScript',$this->plugin_url . 'assets/auth.js');
+        
+    }
+    public function add_auth_template(){
 
-	public function setSubpages()
-	{
-		$this->subpages = array(
-			array(
-				'parent_slug' => 'alecaddd_plugin', 
-				'page_title' => 'Login Manager', 
-				'menu_title' => 'Login Manager', 
-				'capability' => 'manage_options', 
-				'menu_slug' => 'alecaddd_auth', 
-				'callback' => array( $this->callbacks, 'adminAuth' )
-			)
-		);
-	}
+        $file = $this->plugin_path . 'templates/auth.php';
+
+        if(file_exists($file)){
+            load_template($file,true);
+        }
+    }
 }
